@@ -3,15 +3,6 @@ volumes:
   postgres_data:
     driver: local
 services:
-  nginx:
-    image: nginx:latest
-    container_name: idealy-nginx
-    ports:
-      - '8180:80'
-      - '8143:443'
-    volumes:
-      - './app:/var/www/html'
-      - './config/nginx:/etc/nginx/conf.d'
   postgres:
     image: postgres
     volumes:
