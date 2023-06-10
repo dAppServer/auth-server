@@ -11,18 +11,29 @@ services:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
   keycloak:
-    image: quay.io/keycloak/keycloak:legacy
+    image: quay.io/keycloak/keycloak:latest
+    build:
+      dockerfile: Dockerfile
+    command:
+      - start
+    volumes:
+      - ./conf:/opt/keycloak/conf
+      - ./providers:/opt/keycloak/providers
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
       DB_DATABASE: keycloak
-      DB_USER: keycloak
+      KC_DB_USERNAME: keycloak
       DB_SCHEMA: public
-      DB_PASSWORD: password
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: Pa55w0rd
+      KC_DB_PASSWORD: password
+      KC_HOSTNAME_STRICT_BACKCHANNEL: true
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
+      - "8443:8443"
     depends_on:
       - postgres
