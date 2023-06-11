@@ -9,6 +9,8 @@ services:
     volumes:
       - ./conf:/opt/keycloak/conf
       - ./providers:/opt/keycloak/providers
+    env_file:
+      - .env
     environment:
       KC_PROXY: edge
       KC_DB: mysql
