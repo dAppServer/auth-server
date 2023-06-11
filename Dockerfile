@@ -24,7 +24,7 @@ VOLUME ./conf /opt/keycloak/conf
 # change these values to point to a running postgres instance
 ENV KC_DB=mysql
 ENV KC_DB_URL=localhost
-ENV KC_DB_USERNAME=admin
+ENV KC_DB_USERNAME=auth
 ENV KC_DB_PASSWORD=admin
 ENV KC_HOSTNAME=localhost
 ENV KC_PROXY="edge"
