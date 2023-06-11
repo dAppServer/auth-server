@@ -17,7 +17,6 @@ services:
       DB_DATABASE: auth
       KC_DB_USERNAME: auth2
       DB_SCHEMA: public
-      KC_DB_PASSWORD: password
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HOSTNAME_STRICT: false
