@@ -3,7 +3,6 @@ FROM quay.io/keycloak/keycloak:latest as builder
 # Enable health and metrics support
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
-ENV KC_FEATURES="docker,token-exchange,account-api,account2,web-authn,impersonation,js-adapter,authorization,admin2,recovery-codes,scripts,update-email,par"
 
 WORKDIR /opt/keycloak
 
@@ -31,6 +30,7 @@ ENV KC_HOSTNAME=localhost
 ENV KC_PROXY="edge"
 ENV KC_HTTP_ENABLED=true
 ENV KC_HOSTNAME_STRICT=false
+ENV KC_FEATURES="docker,token-exchange,account-api,account2,web-authn,impersonation,js-adapter,authorization,admin2,recovery-codes,scripts,update-email,par"
 
 CMD start
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
