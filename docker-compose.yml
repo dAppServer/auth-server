@@ -1,18 +1,5 @@
 version: '3'
-volumes:
-  postgres_data:
-    driver: local
 services:
-  postgres:
-    image: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: password
-    ports:
-      - "5432:5432"
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     build:
@@ -23,17 +10,14 @@ services:
       - ./conf:/opt/keycloak/conf
       - ./providers:/opt/keycloak/providers
     environment:
-      KC_DB: postgres
-      KC_DB_URL_HOST: postgres
-      DB_DATABASE: keycloak
+      KC_DB: mysql
+      KC_DB_URL_HOST: 10.0.0.3
+      DB_DATABASE: auth
       KC_DB_USERNAME: keycloak
       DB_SCHEMA: public
       KC_DB_PASSWORD: password
-      KC_HOSTNAME_STRICT_BACKCHANNEL: true
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
       - "8443:8443"
-    depends_on:
-      - postgres
