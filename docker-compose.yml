@@ -11,6 +11,7 @@ services:
       - ./providers:/opt/keycloak/providers
     environment:
       KC_DB: mysql
+      KC_HOSTNAME: auth.host.uk.com
       KC_DB_URL_HOST: 10.0.0.3
       DB_DATABASE: auth
       KC_DB_USERNAME: keycloak
