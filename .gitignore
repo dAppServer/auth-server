@@ -1,3 +1,5 @@
 conf/*.crt
 conf/cert.*
 conf/*.keystore
+.env
+.idea
