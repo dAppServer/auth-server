@@ -11,11 +11,6 @@ services:
       - ./providers:/opt/keycloak/providers
     env_file:
       - .env
-    network_mode: host
     ports:
       - "8080:8080"
       - "8443:8443"
-networks:
-  network1:
-    enable_ipv6: true
-    external: true
