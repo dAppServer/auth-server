@@ -37,5 +37,10 @@ ENV KC_HOSTNAME_STRICT=false
 ENV KC_FEATURES="docker,token-exchange,account-api,account2,web-authn,impersonation,js-adapter,authorization,admin2,recovery-codes,scripts,update-email,par"
 ENV KC_HTTPS_KEY_STORE_FILE=/opt/keycloak/conf/server.keystore
 ENV KC_HTTPS_KEY_STORE_PASSWORD=password
+
+COPY .env .env
+
+RUN source .env
+
 CMD start
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
