@@ -1,7 +1,6 @@
 version: '3'
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
     build:
       dockerfile: Dockerfile
     command:
@@ -11,18 +10,6 @@ services:
       - ./providers:/opt/keycloak/providers
     env_file:
       - .env
-    environment:
-      KC_PROXY: edge
-      KC_DB: mysql
-      KC_HOSTNAME: auth.host.uk.com
-      KC_DB_URL_HOST: 10.0.0.3
-      DB_DATABASE: auth
-      KC_DB_USERNAME: auth2
-      DB_SCHEMA: public
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_HOSTNAME_STRICT: false
-      KC_FEATURES: "account-api, account2, account3, admin-api, admin-fine-grained-authz, admin2, authorization, ciba, client-policies, client-secret-rotation, declarative-user-profile, docker, dynamic-scopes, fips, impersonation, js-adapter, kerberos, map-storage, openshift-integration, par, preview, recovery-codes, scripts, step-up-authentication, token-exchange, update-email, web-authn"
     ports:
       - "8080:8080"
       - "8443:8443"
