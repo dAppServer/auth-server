@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     command:
       - start
+      - --optimized
     volumes:
       - ./conf:/opt/keycloak/conf
       - ./providers:/opt/keycloak/providers

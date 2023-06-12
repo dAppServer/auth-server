@@ -21,9 +21,9 @@ VOLUME ./conf /opt/keycloak/conf
 
 ### DATABASE SETTINGS ###
 ENV KC_DB=mysql
-ENV KC_DB_URL_DATABASE=auth
-ENV KC_DB_URL_HOST=host.docker.internal
-ENV KC_DB_URL_PORT=3306
+ARG KC_DB_URL_DATABASE=auth
+ARG KC_DB_URL_HOST=host.docker.internal
+ARG KC_DB_URL_PORT=3306
 ENV KC_DB_URL=jdbc:$KC_DB://$KC_DB_URL_HOST:$KC_DB_URL_PORT/$KC_DB_URL_DATABASE
 
 ENV KC_DB_USERNAME=auth
@@ -37,10 +37,6 @@ ENV KC_HOSTNAME_STRICT=false
 ENV KC_FEATURES="docker,token-exchange,account-api,account2,web-authn,impersonation,js-adapter,authorization,admin2,recovery-codes,scripts,update-email,par"
 ENV KC_HTTPS_KEY_STORE_FILE=/opt/keycloak/conf/server.keystore
 ENV KC_HTTPS_KEY_STORE_PASSWORD=password
-
-COPY .env .env
-
-RUN source .env
 
 CMD start
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
