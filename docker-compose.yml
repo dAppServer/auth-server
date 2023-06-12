@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     command:
       - start
-      - --optimized
+      - --features=docker,token-exchange,account-api,account2,web-authn,impersonation,js-adapter,authorization,admin2,recovery-codes,scripts,update-email,par
     volumes:
       - ./conf:/opt/keycloak/conf
       - ./providers:/opt/keycloak/providers
